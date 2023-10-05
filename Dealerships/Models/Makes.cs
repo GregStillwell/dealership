@@ -7,6 +7,6 @@ namespace Makes.Models
   {
     public int MakeId { get; set;  }
     public string Name {get; set; }
-    public list<CarModels> CarModels {get; set; }
+    public list<CarModels> CarModel {get; set; }
   }
 }

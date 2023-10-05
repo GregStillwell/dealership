@@ -1,5 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
-using Dealership.Models;
+using Dealerships.Models;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
@@ -16,10 +16,10 @@ namespace Dealership.Controllers
     }
     public ActionResult Index()
     {
-      List<CarModels> model = _db.CarModels
-                            .Include(model => model.Makes)
+      List<CarModels> carModel = _db.CarModels
+                            .Include(carModel => carModel.Makes)
                             .ToList();
-      return View(model);
+      return View(carModel);
     }
     public ActionResult Create()
     {
@@ -29,31 +29,31 @@ namespace Dealership.Controllers
     [HttpPost]
     public ActionResult Create(Makes makes)
     {
-      if (model.MakeId == 0)
+      if (carModel.MakeId == 0)
       {
         return RedirectToAction("Create");
       }
-      _db.Models.Add(model);
+      _db.Models.Add(carModel);
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
     public ActionResult Details(int id)
     {
       Models thisCarModel = _db.CarModels
-        .Include(model => model.Makes)
-        .FirstOrDefault(model => model.CarModelId == id);
+        .Include(carModel => carModel.Makes)
+        .FirstOrDefault(carModel => carModel.CarModelId == id);
       return View(thisCarModel);
     }
     public ActionResult Edit(int id)
     {
-      CarModels thisCarModel = _db.CarModels.FirstOrDefault(model => model.ModelId == id);
+      CarModels thisCarModel = _db.CarModels.FirstOrDefault(carModel => carModel.CarModelId == id);
       ViewBag.MakesId = new SelectList(_db.Makes, "MakesId", "Name");
       return View(thisCarModel);
     }
     [HttpPost]
-    public ActionResult Edit(CarModels model)
+    public ActionResult Edit(CarModels carModel)
     {
-      _db.CarModels.Update(model);
+      _db.CarModels.Update(carModel);
       _db.SaveChanges();
       return RedirectToAction("Index");
     }

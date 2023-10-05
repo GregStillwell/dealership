@@ -3,7 +3,7 @@
 }
 
 @using Dealership.Models;
-@model List<Dealership.Models.Makes>;
+@model Dealership.Models.Makes;
 
 <h1>Car Makes</h1>
 
@@ -14,9 +14,9 @@
 else
 {
   <ul>
-  @foreach (CarModels carmodel in Model)
+  @foreach (CarModels carModel in Model)
     {
-      <li>@Html.ActionLink($"{model.Name}", "Details", new { id = model.CarModelId }) | @model.Makes.Name</li>
+      <li>@Html.ActionLink($"{carModel.Name}", "Details", new { id = carModel.CarModelId }) | @carModel.Makes.Name</li>
     }
   </ul>
 }
