@@ -1,0 +1,22 @@
+@{
+  Layout = "_Layout";
+}
+
+@model Dealership.Models.Model
+
+<p><strong>NOTE:</strong> You need to have at least one car maker before you can add a car model!</p>
+<p>Go to @Html.ActionLink("this page", "Create", "Makes") to create a car maker.</p>
+
+<h4>Add a new car model</h4>
+
+@using (Html.BeginForm())
+{
+  @Html.LabelFor(model => model.Name)
+  @Html.TextBoxFor(model => model.Name)
+
+  @Html.LabelFor(model => model.Makes)
+  @Html.DropDownList("MakeId")
+
+  <input type="submit" value="Add new car model" class="btn btn-primary" />
+}
+<p>@Html.ActionLink("Show all models", "Index")</p>

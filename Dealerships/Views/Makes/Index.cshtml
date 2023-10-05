@@ -1,0 +1,26 @@
+@{
+  Layout = "_Layout";
+}
+
+@using Dealership.Models;
+
+<h1>Makes</h1>
+
+@if (@Model.Count == 0)
+{
+  <h3>No manufacturers have been added yet!</h3>
+}
+
+
+<ul>
+  @foreach (Make make in Model)
+  {
+    <li>@Html.ActionLink($"{make.Name}", "Details", new { id = make.MakeId })</li>
+  }
+</ul>
+
+<p>@Html.ActionLink("Add new vehicle make", "Create")</p>
+<p>@Html.ActionLink("Add new vehicle model", "Create", "Models")</p>
+<p>@Html.ActionLink("Home", "Index", "Home")</p>
+
+

@@ -1,0 +1,14 @@
+@{
+  Layout = "_Layout";
+}
+
+@model Dealership.Models.CarModel
+
+<h2>Model Details</h2>
+<hr />
+<h3>@Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)<h3>
+    <h3>@Html.DisplayNameFor(model => model.Makes): @Html.DisplayFor(model => model.Makes.Name)<h3>
+
+        <p>@Html.ActionLink("Edit model", "Edit", new { id = Model.CarModelId })</p>
+        <p>@Html.ActionLink("Delete model", "Delete", new { id = Model.CarModelId })</p>
+        <p>@Html.ActionLink("Back to list", "Index")</p>

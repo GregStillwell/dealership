@@ -1,0 +1,30 @@
+@{
+  Layout = "_Layout";
+}
+
+@using Dealership.Models
+@model Dealership.Models.Makes
+
+<h2>Manufacturer -- AKA Make -- Details</h2>
+<hr />
+<h3>@Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)<h3>
+<h3>@Html.DisplayNameFor(model => model.Type): @Html.DisplayFor(model => model.Type)</h3>
+
+    @if (@Model.Makes.Count == 0)
+    {
+      <h3>No models in this make have been added yet!</h3>
+    }
+
+      <ul>
+        @foreach ( CarModels model in Model.CarModels)
+        {
+          <li>@Html.ActionLink($"{CarModel.Name}", "Details", "CarModels", new { id = model.CarModelId })</li>
+        }
+      </ul>
+
+    <p>@Html.ActionLink("Edit Makes", "Edit", new { id = Model.MakesId })</p>
+    <p>@Html.ActionLink("Delete Make", "Delete", new { id = Model.MakesId })</p>
+    <p>@Html.ActionLink("Back to list", "Index")</p>
+
+    
+  
