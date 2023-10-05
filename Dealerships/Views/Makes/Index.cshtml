@@ -2,7 +2,7 @@
   Layout = "_Layout";
 }
 
-@using Dealership.Models;
+@using Dealerships.Models;
 
 <h1>Makes</h1>
 
@@ -13,7 +13,7 @@
 
 
 <ul>
-  @foreach (Make make in Model)
+  @foreach (Makes make in Model)
   {
     <li>@Html.ActionLink($"{make.Name}", "Details", new { id = make.MakeId })</li>
   }

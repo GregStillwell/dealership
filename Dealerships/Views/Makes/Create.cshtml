@@ -2,16 +2,14 @@
   Layout = "_Layout";
 }
 
-@model Dealership.Models.Makes
-@using Dealership.Models
+@model Dealerships.Models.Makes
+@using Dealerships.Models
 
 <h4>Add a new Manufacturer</h4>
 @using (Html.BeginForm())
 {
   @Html.LabelFor(model => model.Name)
   @Html.TextBoxFor(model => model.Name)
-  @Html.LabelFor(model => model.Type)
-  @Html.TextBoxFor(model => model.Type)
   <input type="submit" value="Add new Make" />
 }
 <p>@Html.ActionLink("Show all makes", "Index")</p>

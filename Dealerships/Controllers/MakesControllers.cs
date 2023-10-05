@@ -1,16 +1,16 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
-using Dealership.Models;
+using Dealerships.Models;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Dealership.Controllers
+namespace Dealerships.Controllers
 {
   public class MakesController : Controller
   {
-    private readonly DealershipContext _db;
+    private readonly DealershipsContext _db;
 
-    public MakesController(DealershipContext db)
+    public MakesController(DealershipsContext db)
     {
       _db = db;
     }

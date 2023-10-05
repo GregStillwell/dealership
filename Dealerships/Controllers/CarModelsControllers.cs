@@ -5,12 +5,12 @@ using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
-namespace Dealership.Controllers
+namespace Dealerships.Controllers
 {
   public class CarModelsController : Controller
   {
-    private readonly DealershipContext _db;
-    public CarModelsController(DealershipContext db)
+    private readonly DealershipsContext _db;
+    public CarModelsController(DealershipsContext db)
     {
       _db = db;
     }
@@ -27,19 +27,19 @@ namespace Dealership.Controllers
       return View();
     }
     [HttpPost]
-    public ActionResult Create(Makes makes)
+    public ActionResult Create(CarModels carModels)
     {
-      if (carModel.MakeId == 0)
+      if (carModels.CarModelId == 0)
       {
         return RedirectToAction("Create");
       }
-      _db.Models.Add(carModel);
+      _db.CarModels.Add(carModels);
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
     public ActionResult Details(int id)
     {
-      Models thisCarModel = _db.CarModels
+      CarModels thisCarModel = _db.CarModels
         .Include(carModel => carModel.Makes)
         .FirstOrDefault(carModel => carModel.CarModelId == id);
       return View(thisCarModel);

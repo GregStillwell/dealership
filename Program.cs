@@ -1,9 +1,9 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using Dealership.Models;
+using Dealerships.Models;
 
-namespace Dealership
+namespace Dealerships
 {
   class Program
   {
@@ -14,7 +14,7 @@ namespace Dealership
 
       builder.Services.AddControllersWithViews();
 
-      builder.Services.AddDbContext<DealershipContext>(
+      builder.Services.AddDbContext<DealershipsContext>(
         dbContextOptions => dbContextOptions
           .UseMySql(
             builder.Configuration["ConnectionStrings:DefaultConnection"], ServerVersion.AutoDetect(builder.Configuration["ConnectionStrings:DefaultConnection"]
